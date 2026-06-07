@@ -36,6 +36,8 @@ LINK / FONTE
 - [`docs/04-arquitetura-fabrica.md`](docs/04-arquitetura-fabrica.md) — a fábrica, quem faz o quê, contrato único.
 - [`docs/05-decisao-motor.md`](docs/05-decisao-motor.md) — Remotion × HyperFrames (recomendação com evidência).
 - [`docs/06-decisoes-pendentes-e-backlog.md`](docs/06-decisoes-pendentes-e-backlog.md) — o que falta decidir e construir.
+- [`docs/07-caso-pipeline-funcional.md`](docs/07-caso-pipeline-funcional.md) — **caso de exemplo** que deu certo (Hormozi 12, 3 camadas): por que funcionou, pipeline, dependências, como repetir.
+- [`docs/08-mapa-libs-motion.md`](docs/08-mapa-libs-motion.md) — **mapa biblioteca→tarefa** (GSAP/D3/Three/Lottie/SVG): o cérebro de seleção do compositor, agnóstico de motor.
 
 ## Estado
 

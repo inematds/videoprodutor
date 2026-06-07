@@ -1,0 +1,52 @@
+{
+  "version": "1.0",
+  "meta": {
+    "title": "12 Regras do Hormozi",
+    "language": "pt-BR"
+  },
+  "source": {
+    "kind": "topic",
+    "ref": "As 12 dicas de negócios do Alex Hormozi",
+    "media": null
+  },
+  "intent": {
+    "goal": "viral",
+    "best_action_rationale": "Input classificado como 'topic'; preset 'viral' sugere objetivo 'viral'. A timeline criativa é preenchida na etapa de análise da skill.",
+    "angle": null,
+    "pain": null,
+    "emotion": null,
+    "framework": null,
+    "hook_variants": []
+  },
+  "style": {
+    "preset": "viral",
+    "pacing": {
+      "avg_cut_seconds": 1.1,
+      "energy": 0.95
+    },
+    "transitions": [
+      "cut",
+      "zoom"
+    ],
+    "music": {
+      "energy": 0.95
+    },
+    "captions": {
+      "enabled": true,
+      "style": "karaoke",
+      "position": null
+    },
+    "color": {
+      "look": "punchy"
+    }
+  },
+  "output": {
+    "aspect": "9:16",
+    "duration_target_seconds": 30.0,
+    "platform": "generic"
+  },
+  "timeline": [],
+  "render": {
+    "engine_hint": "auto"
+  }
+}
