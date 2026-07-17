@@ -3,7 +3,7 @@
 > Origem: análise de um material sobre **Claude Code + Remotion + bibliotecas de animação web**.
 > Lição central: o valor não é "usar Remotion" — é saber **qual biblioteca usar em cada tipo de conteúdo**.
 > E esse mapa é **agnóstico de motor**: vale no Remotion (React) e no HyperFrames (HTML, embute qualquer lib web).
-> É exatamente a lógica de seleção que faltava ao **compositor** do videoprodutor (`docs/04`).
+> É exatamente a lógica de seleção do **compositor** do videoprodutor.
 
 ## A matriz (biblioteca → quando usar)
 
@@ -34,8 +34,8 @@
 
 | Projeto | Aplicação |
 |---|---|
-| **videoprodutor** (compositor) | a matriz acima = a lógica de "como realizar cada beat". Reforça `docs/04`. |
-| **docs/05 (motor)** | evidência pró-Remotion + determinismo; mas o mapa é agnóstico → escolhe só *onde hospedar* as libs. |
+| **videoprodutor** (compositor) | a matriz acima = a lógica de "como realizar cada beat". |
+| **motor de render** | evidência pró-Remotion + determinismo; mas o mapa é agnóstico → escolhe só *onde hospedar* as libs. |
 | **pixflow** (camada 1) | valida Three.js vanilla + frame-determinismo; usar alpha render p/ exportar a cena cinema. |
 | **remotion-templates** | instalar Remotion Skills; expandir categorias seguindo a matriz (D3/Three/Lottie). |
 | **video-explicativo** (HyperFrames+GSAP) | GSAP/spring/start-simple já aplicam; como é HTML, pode **embutir D3/Three/Lottie** sem trocar de motor. SVG fallback = nicho do Lottie. |

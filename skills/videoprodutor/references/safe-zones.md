@@ -13,7 +13,7 @@ problema (a UI do player fica fora do frame) — **isto é só para 9:16**.
 | **Base** | ~últimos 18–25% (≈360–480px) | @usuário, legenda do app, nome do áudio, CTA da plataforma | manter base livre |
 | **Livre (segura)** | **miolo + topo-esquerda** | — | ancorar o conteúdo aqui |
 
-## Layout validado p/ 9:16 (caso `videoprodutor/videos/hormozi-12-dicas`)
+## Layout validado p/ 9:16 (caso de referência "Hormozi 12 dicas")
 
 Arranjo que funcionou bem nas redes:
 

@@ -1,6 +1,6 @@
 ---
 name: videoprodutor
-version: 0.1.0
+version: 0.2.0
 description: O Produtor — orquestra link/assunto → vídeo profissional ponta a ponta (plano, direção, imagem/SVG, voz, render em 3 camadas), 16:9 e 9:16, dark premium INEMA.CLUB, tudo local. Use quando o usuário der um link/assunto/fonte e quiser o VÍDEO PROFISSIONAL completo (propaganda ou explicativo) saindo de uma vez — não só roteiro, não só imagem, não só prompt. Acione para "produz o vídeo", "do link ao vídeo", "vídeo profissional disso", "monta o vídeo inteiro", "fábrica de vídeo".
 ---
 
@@ -21,6 +21,7 @@ Detalhe e quando usar cada lib em [references/mapa-libs-motion.md](references/ma
 LINK/ASSUNTO
  → PLANO        skill video-plan-editor (vpe) → plano-edicao.json (preset, beats, tópicos, CTA)
  → ROTEIRO      SCRIPT.md + assets/txt/sN.txt (expandir siglas/números p/ fala)
+ → REVISÃO      texto: tela (PT-BR acentuado + inglês na grafia original) vs fala (txt/sN.txt: inglês foneticamente) — references/revisao-texto.md
  → VOZ+TIMING   Kokoro pf_dora → assets/audio/sN.wav ; ffprobe → array AUDIO[]
  → ARTE camada1 AUTO: servidor de imagem no ar → flux2-klein (gen-imgs.mjs); fora → SVG (svg-icons.mjs)
  → COMPOR       scripts/composition-template.mjs (3 camadas; timing do AUDIO[])
@@ -43,12 +44,13 @@ node -v ; ffmpeg -version | head -1 ; which vpe
 - **Timing de fonte única**: o array `AUDIO[]` (durações reais via ffprobe) governa cena + animação + áudio.
 - **Imagem fiel ao conceito + revisão semântica**: conferir CADA arte antes de aceitar (flux às vezes mete texto; evitar calendário/cupom/cards no prompt).
 - **Movimento é do código (GSAP), não da imagem**; a imagem/SVG é execução fiel do conceito.
+- **Revisar texto antes da voz/tela**: acentuação PT-BR palavra a palavra; termos em inglês na **grafia original na tela** mas **foneticamente na forma-fala** (`txt/sN.txt`, ex.: `deploy`→"deplói", `design`→"dizáin"). Acento/pronúncia errados contaminam tela **e** locução. Ver [references/revisao-texto.md](references/revisao-texto.md).
 - **Sempre conferir frames** (não dá pra ouvir o áudio — pedir validação da locução ao usuário).
 - **Começar simples → 1 cena-piloto → aprovar estilo → escalar.**
 
 ## Como usar (resumo)
 1. Pré-flight. 2. `vpe scaffold "<assunto>" --preset <...>` → preencher o plano.
-3. Roteiro + `assets/txt/sN.txt` → gerar WAVs (Kokoro) → medir durações → `AUDIO[]`.
+3. Roteiro → **revisar texto** (acentuação + inglês na forma-fala, ver [references/revisao-texto.md](references/revisao-texto.md)) → `assets/txt/sN.txt` → gerar WAVs (Kokoro) → medir durações → `AUDIO[]`.
 4. `node scripts/gen-imgs.mjs` (se servidor up) **ou** deixar o modo SVG; conferir as artes.
 5. `node scripts/composition-template.mjs` (16:9) e `--vertical` (9:16); `--svg`/`--noimg`/`--img` forçam o modo (sem flag = AUTO).
 6. `hyperframes lint` + `inspect` + frames de draft → `render --quality high` nos 2 formatos.
@@ -60,10 +62,12 @@ node -v ; ffmpeg -version | head -1 ; which vpe
 - `scripts/fetch-fonts.mjs` — baixa as .woff2 (Sora/Inter/JetBrains).
 
 ## Referências
+- [references/revisao-texto.md](references/revisao-texto.md) — revisão de acentuação + pronúncia de inglês (forma tela/fala).
 - [references/pipeline.md](references/pipeline.md) — passo a passo detalhado e dependências.
 - [references/mapa-libs-motion.md](references/mapa-libs-motion.md) — qual lib por tarefa (GSAP/D3/Three/Lottie/SVG).
 - [references/safe-zones.md](references/safe-zones.md) — layout 9:16 p/ redes.
 - [references/fallback-svg.md](references/fallback-svg.md) — imagem padrão, SVG fallback.
 
-> Caso de referência completo e funcional: `videoprodutor/videos/hormozi-12-dicas/` (3 camadas, 16:9 + 9:16, com/sem/SVG).
-> Decisões de arquitetura em `videoprodutor/docs/` (00–08). Motor: HyperFrames hoje; ver `docs/05`.
+> Esta skill é a destilação executável de um caso de referência funcional (vídeo "Hormozi 12 dicas":
+> 3 camadas, 16:9 + 9:16, com imagem e com fallback SVG) e da análise de arquitetura que o originou.
+> Motor de render hoje: HyperFrames.
